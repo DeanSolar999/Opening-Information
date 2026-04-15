@@ -30,7 +30,7 @@
         .theme-sat { --theme-color: #f6d365; --theme-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); --theme-glow: rgba(246, 211, 101, 0.5); }
         .theme-sun { --theme-color: #f12711; --theme-gradient: linear-gradient(135deg, #f12711 0%, #f5af19 100%); --theme-glow: rgba(245, 175, 25, 0.5); }
         
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
@@ -38,10 +38,9 @@
             margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh;
-            background-color: #05080a; /* 底色保險 */
+            background-color: #05080a;
         }
 
-        /* 🚀 獨立背景圖層：確保 100% 呈現 */
         .bg-fixed {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
@@ -53,7 +52,6 @@
             background-repeat: no-repeat;
         }
 
-        /* 🚀 流體光影層：疊加在背景圖之上 */
         .fluid-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
@@ -80,13 +78,15 @@
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 30px; }
 
+        /* 🚀 核心修改：增加 .is-flipped 觸發條件 */
         .card { height: 500px; perspective: 1200px; }
         .card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d; cursor: pointer;
         }
-        .card:hover .card-inner { transform: rotateY(180deg); }
+        .card:hover .card-inner, 
+        .card.is-flipped .card-inner { transform: rotateY(180deg); }
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
@@ -264,7 +264,6 @@
                             <div class="member-row"><span class="m-id">16</span><span class="m-name">昌昌</span><span class="m-status status-ok"></span></div>
                             <div class="member-row"><span class="m-id">17</span><span class="m-name">Mark</span><span class="m-status status-red"></span></div>
                             <div class="member-row"><span class="m-id">18</span><span class="m-name">阿元</span><span class="m-status status-red"></span></div>
-                           
                         </div>
                     </div>
                 </div>
@@ -470,6 +469,26 @@
         </p>
     </footer>
 </div>
+
+<script>
+    // 取得所有的卡片元素
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        // 監聽點擊事件 (支援手機觸控與滑鼠點擊)
+        card.addEventListener('click', function() {
+            // 切換翻轉狀態類別
+            this.classList.toggle('is-flipped');
+            
+            // 可選：如果你希望點擊一張卡片時，其他已翻開的卡片自動翻回去，可以加上這段：
+            /*
+            cards.forEach(c => {
+                if (c !== this) c.classList.remove('is-flipped');
+            });
+            */
+        });
+    });
+</script>
 
 </body>
 </html>
