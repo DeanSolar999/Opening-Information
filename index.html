@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>曜日羽球團 2026 S2 - 開場資訊</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,8 +13,8 @@
         :root {
             --text-main: #ffffff;
             --text-muted: #adb5bd;
-            --glass-bg: rgba(15, 20, 30, 0.85); 
-            --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --glass-bg: rgba(15, 20, 30, 0.75); 
+            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
             --status-ok: #2ecc71;      
             --status-blue: #3498db;    
             --status-yellow: #f1c40f;  
@@ -22,158 +22,146 @@
             --status-pending: rgba(255, 255, 255, 0.1);
         }
 
-        /* 曜日主題色 */
-        .theme-mon { --theme-color: #da22ff; --theme-gradient: linear-gradient(135deg, #da22ff 0%, #9733ee 100%); --theme-glow: rgba(218, 34, 255, 0.4); }
-        .theme-tue { --theme-color: #ff416c; --theme-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); --theme-glow: rgba(255, 65, 108, 0.4); }
-        .theme-wed { --theme-color: #00c6ff; --theme-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); --theme-glow: rgba(0, 198, 255, 0.4); }
-        .theme-thu { --theme-color: #11998e; --theme-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); --theme-glow: rgba(56, 239, 125, 0.4); }
-        .theme-sat { --theme-color: #f6d365; --theme-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); --theme-glow: rgba(246, 211, 101, 0.4); }
-        .theme-sun { --theme-color: #f12711; --theme-gradient: linear-gradient(135deg, #f12711 0%, #f5af19 100%); --theme-glow: rgba(245, 175, 25, 0.4); }
+        .theme-mon { --theme-color: #da22ff; --theme-gradient: linear-gradient(135deg, #da22ff 0%, #9733ee 100%); --theme-glow: rgba(218, 34, 255, 0.5); }
+        .theme-tue { --theme-color: #ff416c; --theme-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); --theme-glow: rgba(255, 65, 108, 0.5); }
+        .theme-wed { --theme-color: #00c6ff; --theme-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); --theme-glow: rgba(0, 198, 255, 0.5); }
+        .theme-thu { --theme-color: #11998e; --theme-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); --theme-glow: rgba(56, 239, 125, 0.5); }
+        .theme-sat { --theme-color: #f6d365; --theme-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); --theme-glow: rgba(246, 211, 101, 0.5); }
+        .theme-sun { --theme-color: #f12711; --theme-gradient: linear-gradient(135deg, #f12711 0%, #f5af19 100%); --theme-glow: rgba(245, 175, 25, 0.5); }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: 'Montserrat', 'Noto Sans TC', sans-serif;
             color: var(--text-main);
-            margin: 0; padding: 15px;
+            margin: 0; padding: 20px;
             display: flex; flex-direction: column; align-items: center;
             min-height: 100vh;
             background-color: #05080a;
-            overflow-x: hidden;
         }
 
-        /* 背景優化 */
         .bg-fixed {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -2;
             background-image: 
-                linear-gradient(rgba(10, 15, 25, 0.6) 0%, rgba(5, 8, 12, 0.98) 100%),
-                url('https://images.unsplash.com/photo-1626225967045-2c70bc860430?auto=format&fit=crop&q=60&w=1200');
-            background-size: cover;
-            background-position: center center;
+                linear-gradient(rgba(10, 15, 25, 0.5) 0%, rgba(5, 8, 12, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1626225967045-2c70bc860430?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover; background-position: center 20%; background-repeat: no-repeat;
         }
 
-        .container { max-width: 1100px; width: 100%; padding-bottom: 40px; position: relative; z-index: 1; }
+        .fluid-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, transparent, rgba(26, 35, 51, 0.2), rgba(43, 27, 61, 0.2));
+            background-size: 400% 400%; animation: gradientFlow 15s ease infinite;
+        }
+        @keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+        .container { max-width: 1100px; width: 100%; padding-bottom: 50px; position: relative; z-index: 1; }
 
         header {
-            text-align: center; margin-bottom: 25px; padding: 25px 15px;
-            background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 16px;
+            text-align: center; margin-bottom: 30px; padding: 35px;
+            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
         }
-        h1 { font-size: 1.6rem; margin: 0; font-weight: 900; letter-spacing: 1px; }
-        header p { font-size: 0.7rem; color: #f6d365; font-weight: 900; letter-spacing: 3px; margin: 8px 0 0; }
+        h1 { font-size: 2.2rem; margin: 0; font-weight: 900; letter-spacing: 2px; }
 
         .region-title {
-            text-align: center; font-size: 1.3rem; font-weight: 900; margin: 35px 0 20px;
-            display: flex; align-items: center; justify-content: center; gap: 15px;
+            text-align: center; font-size: 1.8rem; font-weight: 900; margin: 50px 0 25px;
+            display: flex; align-items: center; justify-content: center; gap: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
         }
-        .region-title::before, .region-title::after { content: ""; height: 2px; width: 30px; background: rgba(255,255,255,0.3); }
+        .region-title::before, .region-title::after { content: ""; height: 3px; width: 50px; background: rgba(255,255,255,0.5); }
 
-        /* 網格調整 */
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-bottom: 20px; 
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 30px; }
 
-        /* 卡片高度在手機端稍短一點 */
-        .card { height: 460px; perspective: 1200px; user-select: none; }
+        /* --- 修正卡片邏輯 --- */
+        .card { height: 500px; perspective: 1200px; user-select: none; }
         .card-inner {
             position: relative; width: 100%; height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-style: preserve-3d;
         }
-        
-        /* 支援電腦 Hover 與 手機 Class 翻轉 */
-        .card:hover .card-inner, 
+
+        /* 電腦版：滑鼠經過翻轉 */
+        @media (hover: hover) {
+            .card:hover .card-inner { transform: rotateY(180deg); }
+        }
+
+        /* 通用/手機版：點擊後翻轉 */
         .card.is-flipped .card-inner { transform: rotateY(180deg); }
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
             -webkit-backface-visibility: hidden; backface-visibility: hidden;
-            border-radius: 20px; padding: 25px 20px;
+            border-radius: 24px; padding: 30px 20px;
             display: flex; flex-direction: column;
-            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background: var(--glass-bg); backdrop-filter: blur(16px);
             border: 1.5px solid var(--theme-color); 
-            box-shadow: 0 5px 15px var(--theme-glow), var(--glass-shadow);
+            box-shadow: 0 0 15px var(--theme-glow), inset 0 0 15px var(--theme-glow), var(--glass-shadow);
         }
 
         .card-front { align-items: center; justify-content: center; }
         .card-back { transform: rotateY(180deg); background: rgba(10, 15, 25, 0.98); align-items: flex-start; }
 
         .card-front::after {
-            content: '點擊查看球員名單'; position: absolute; bottom: 15px; 
-            font-size: 0.75rem; font-weight: 700; color: var(--theme-color); letter-spacing: 1px;
-            animation: pulse 2s infinite;
+            content: 'TAP TO VIEW ROSTER'; position: absolute; bottom: 15px; 
+            font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.4); letter-spacing: 2px;
         }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
 
         .icon-box {
-            width: 60px; height: 60px; border-radius: 15px;
-            background: var(--theme-gradient); font-size: 1.6rem;
+            width: 65px; height: 65px; border-radius: 18px;
+            background: var(--theme-gradient); font-size: 1.8rem;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 15px; box-shadow: 0 8px 15px var(--theme-glow);
+            margin-bottom: 20px; box-shadow: 0 10px 20px var(--theme-glow);
         }
 
-        h3 { font-size: 1.5rem; font-weight: 900; margin: 0; }
-        .location { font-size: 1rem; font-weight: 700; margin: 12px 0 5px; text-align: center; }
-        .details { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px; }
+        h3 { font-size: 1.7rem; font-weight: 900; margin: 0; text-shadow: 0 0 10px var(--theme-glow); }
+        .location { font-size: 1.15rem; font-weight: 700; margin: 15px 0 5px; text-align: center; }
+        .details { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; text-align: center; }
         .price-tag { 
-            padding: 6px 20px; border-radius: 20px; border: 1px solid var(--theme-color); 
-            font-weight: 900; background: rgba(0,0,0,0.4); font-size: 0.9rem;
+            padding: 8px 25px; border-radius: 30px; border: 1px solid var(--theme-color); 
+            font-weight: 900; background: rgba(0,0,0,0.5); font-size: 1rem;
         }
 
-        /* 名單滾動優化 */
-        .back-header { width: 100%; border-bottom: 2px solid var(--theme-color); padding-bottom: 8px; margin-bottom: 12px; }
-        .back-title { font-size: 0.9rem; font-weight: 900; color: var(--theme-color); }
+        .back-header { width: 100%; border-bottom: 2px solid var(--theme-color); padding-bottom: 8px; margin-bottom: 15px; flex-shrink: 0; }
+        .back-title { font-size: 0.95rem; font-weight: 900; color: var(--theme-color); letter-spacing: 1px; }
         
-        .member-container { 
-            width: 100%; flex-grow: 1; 
-            overflow-y: auto; 
-            padding-right: 5px;
-            -webkit-overflow-scrolling: touch; /* 手機滾動優化 */
-        }
-        .member-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 6px 10px; }
+        .member-container { width: 100%; flex-grow: 1; overflow-y: auto; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .member-container::-webkit-scrollbar { width: 3px; }
+        .member-container::-webkit-scrollbar-thumb { background: var(--theme-color); border-radius: 10px; }
+
+        .member-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 10px 15px; }
         .member-row {
-            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; display: flex; align-items: center;
-            color: #e2e8f0; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 4px 0;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: flex; align-items: center;
+            color: #e2e8f0; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px;
         }
-        .m-id { color: var(--theme-color); margin-right: 4px; font-weight: 700; }
+
+        .m-id { color: var(--theme-color); margin-right: 8px; font-weight: 700; min-width: 20px; }
         .m-name { flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .m-status { width: 6px; height: 6px; border-radius: 50%; margin-left: 4px; }
+        .m-status { width: 8px; height: 8px; border-radius: 50%; margin-left: 6px; flex-shrink: 0; }
+        .status-ok { background-color: var(--status-ok); box-shadow: 0 0 8px var(--status-ok); }
+        .status-blue { background-color: var(--status-blue); box-shadow: 0 0 8px var(--status-blue); }
+        .status-yellow { background-color: var(--status-yellow); box-shadow: 0 0 8px var(--status-yellow); }
+        .status-red { background-color: var(--status-red); box-shadow: 0 0 8px var(--status-red); }
 
-        /* 狀態顏色 */
-        .status-ok { background: var(--status-ok); box-shadow: 0 0 5px var(--status-ok); }
-        .status-blue { background: var(--status-blue); box-shadow: 0 0 5px var(--status-blue); }
-        .status-yellow { background: var(--status-yellow); box-shadow: 0 0 5px var(--status-yellow); }
-        .status-red { background: var(--status-red); box-shadow: 0 0 5px var(--status-red); }
-
-        footer { margin-top: 30px; text-align: center; padding: 0 10px; }
+        footer { margin-top: 40px; text-align: center; }
         .tag-badge { 
-            display: inline-block; padding: 5px 12px; border-radius: 6px; 
+            display: inline-block; padding: 6px 15px; border-radius: 8px; 
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem; font-weight: 700; margin: 4px;
-        }
-        .footer-warning { color: #ff4b2b; font-weight: 900; margin-top: 20px; font-size: 0.75rem; letter-spacing: 1px; }
-
-        /* 螢幕極小時調整 (iPhone SE 等) */
-        @media (max-width: 350px) {
-            .grid { grid-template-columns: 1fr; }
-            h1 { font-size: 1.3rem; }
-            .card { height: 420px; }
-            .member-grid { grid-template-columns: 1fr; }
+            font-size: 0.9rem; font-weight: 700; margin: 5px;
         }
     </style>
 </head>
 <body>
 
 <div class="bg-fixed"></div>
+<div class="fluid-overlay"></div>
 
 <div class="container">
     <header>
         <h1>🏸 曜日羽球團 2026 S2</h1>
-        <p>STRATEGIC ROSTER ACCESS</p>
+        <p style="color: #f6d365; font-weight: 900; letter-spacing: 5px; margin: 10px 0 0;">STRATEGIC ROSTER ACCESS</p>
     </header>
 
     <div class="region-title">TAIPEI 台北區域</div>
@@ -188,7 +176,7 @@
                     <div class="price-tag">臨打 NT$ 230</div>
                 </div>
                 <div class="card-back">
-                    <div class="back-header"><div class="back-title">S2 月曜南港名單</div></div>
+                    <div class="back-header"><div class="back-title">S2 季繳 · 月曜南港</div></div>
                     <div class="member-container">
                         <div class="member-grid">
                             <div class="member-row"><span class="m-id">01</span><span class="m-name">阿樂</span><span class="m-status status-blue"></span></div>
@@ -218,7 +206,7 @@
                     <div class="price-tag">臨打 NT$ 230</div>
                 </div>
                 <div class="card-back">
-                    <div class="back-header"><div class="back-title">S2 火曜太平名單</div></div>
+                    <div class="back-header"><div class="back-title">S2 季繳 · 火曜太平</div></div>
                     <div class="member-container">
                         <div class="member-grid">
                             <div class="member-row"><span class="m-id">01</span><span class="m-name">阿寶</span><span class="m-status status-red"></span></div>
@@ -255,7 +243,7 @@
                     <div class="price-tag">臨打 NT$ 300</div>
                 </div>
                 <div class="card-back">
-                    <div class="back-header"><div class="back-title">S2 水曜二重名單</div></div>
+                    <div class="back-header"><div class="back-title">S2 季繳 · 水曜二重</div></div>
                     <div class="member-container">
                         <div class="member-grid">
                             <div class="member-row"><span class="m-id">01</span><span class="m-name">小安</span><span class="m-status status-yellow"></span></div>
@@ -282,32 +270,221 @@
             </div>
         </div>
 
+        <div class="card theme-thu">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-box">🌳</div>
+                    <h3>木曜日 THU</h3>
+                    <div class="location">大同運動中心 20-22</div>
+                    <div class="details">四面場 (2H)</div>
+                    <div class="price-tag">臨打 NT$ 230</div>
+                </div>
+                <div class="card-back">
+                    <div class="back-header"><div class="back-title">S2 季繳 · 木曜大同</div></div>
+                    <div class="member-container">
+                        <div class="member-grid">
+                            <div class="member-row"><span class="m-id">01</span><span class="m-name">宏爺</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">02</span><span class="m-name">小開</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">03</span><span class="m-name">大叔</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">04</span><span class="m-name">崎萁</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">05</span><span class="m-name">Paul</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">06</span><span class="m-name">魯蛋</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">07</span><span class="m-name">阿承</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">08</span><span class="m-name">翔</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">09</span><span class="m-name">阿福</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">Denny</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">11</span><span class="m-name">Rick</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">12</span><span class="m-name">成成</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">13</span><span class="m-name">阿斌</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">14</span><span class="m-name">阿鵬</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">15</span><span class="m-name">黃阿平</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">16</span><span class="m-name">Kent</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">17</span><span class="m-name">威威</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">18</span><span class="m-name">村長</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">19</span><span class="m-name">歐馬</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">20</span><span class="m-name">閃亮</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">21</span><span class="m-name">建廷</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">22</span><span class="m-name">Vincent</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">23</span><span class="m-name">許誠</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">24</span><span class="m-name">Lion Lin</span><span class="m-status status-ok"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="card theme-sat">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-box">🪐</div>
+                    <h3>土曜日 SAT</h3>
+                    <div class="location">興雅國小 17:30-21:30</div>
+                    <div class="details">六面場 (4H)</div>
+                    <div class="price-tag">臨打 NT$ 450</div>
+                </div>
+                <div class="card-back">
+                    <div class="back-header"><div class="back-title">S2 季繳 · 土曜興雅</div></div>
+                    <div class="member-container">
+                        <div class="member-grid">
+                            <div class="member-row"><span class="m-id">01</span><span class="m-name">番茄</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">02</span><span class="m-name">阿寬</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">03</span><span class="m-name">阿樂</span><span class="m-status status-blue"></span></div>
+                            <div class="member-row"><span class="m-id">04</span><span class="m-name">阿勳</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">05</span><span class="m-name">小倪</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">06</span><span class="m-name">阿狼</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">07</span><span class="m-name">德瑞克</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">08</span><span class="m-name">小白</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">09</span><span class="m-name">CN</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">建廷</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">11</span><span class="m-name">阿翰</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">12</span><span class="m-name">阿華</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">13</span><span class="m-name">凱力</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">14</span><span class="m-name">阿東</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">15</span><span class="m-name">魚骨</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">16</span><span class="m-name">嘎嘎</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">17</span><span class="m-name">拿皮</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">18</span><span class="m-name">Frank</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">19</span><span class="m-name">James VoV</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">20</span><span class="m-name">Ryan QoQ</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">21</span><span class="m-name">多多</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">22</span><span class="m-name">公羊</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">23</span><span class="m-name">東東二號</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">24</span><span class="m-name">愛迪生</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">25</span><span class="m-name">Jason 8號</span><span class="m-status status-red"></span></div>                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card theme-sun">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-box">☀️</div>
+                    <h3>日曜日 SUN</h3>
+                    <div class="location">中正運動中心 16-18</div>
+                    <div class="details">二面場 (2H)</div>
+                    <div class="price-tag">臨打 NT$ 230</div>
+                </div>
+                <div class="card-back">
+                    <div class="back-header"><div class="back-title">S2 季繳 · 日曜中正</div></div>
+                    <div class="member-container">
+                        <div class="member-grid">
+                            <div class="member-row"><span class="m-id">01</span><span class="m-name">文文</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">02</span><span class="m-name">Keven</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">03</span><span class="m-name">John</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">04</span><span class="m-name">GINO</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">05</span><span class="m-name">Tim</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">06</span><span class="m-name">四爺</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">07</span><span class="m-name">Luke Yang</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">08</span><span class="m-name">Max小麥</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">09</span><span class="m-name">公羊</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">Mark</span><span class="m-status status-ok"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="region-title">TAOYUAN 桃園區域</div>
+    <div class="grid" style="justify-content: center;">
+        <div class="card theme-mon" style="max-width: 450px;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-box">🌛</div>
+                    <h3>月曜日 MON</h3>
+                    <div class="location">中壢運動中心 20-22</div>
+                    <div class="details">四面場 (2H)</div>
+                    <div class="price-tag">臨打 NT$ 200</div>
+                </div>
+                <div class="card-back">
+                    <div class="back-header"><div class="back-title">S2 季繳 · 月曜中壢</div></div>
+                    <div class="member-container">
+                        <div class="member-grid">
+                            <div class="member-row"><span class="m-id">01</span><span class="m-name">節省</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">02</span><span class="m-name">德瑞克</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">03</span><span class="m-name">大頭</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">04</span><span class="m-name">Duke</span><span class="m-status status-blue"></span></div>
+                            <div class="member-row"><span class="m-id">05</span><span class="m-name">亞爾</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">06</span><span class="m-name">Jerry</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">07</span><span class="m-name">可樂 Cola</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">08</span><span class="m-name">Dexter</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">09</span><span class="m-name">班尼</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">新爆</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">11</span><span class="m-name">Hans</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">12</span><span class="m-name">阿仁</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">13</span><span class="m-name">小佳</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">14</span><span class="m-name">Sunny</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">15</span><span class="m-name">Edward</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">16</span><span class="m-name">瑞克</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">17</span><span class="m-name">小葉</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">18</span><span class="m-name">小ann</span><span class="m-status status-ok"></span></div>
+                            <div class="member-row"><span class="m-id">19</span><span class="m-name">Tom</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">20</span><span class="m-name">賀伯 Herbert</span><span class="m-status status-ok"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card theme-wed" style="max-width: 450px;">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div class="icon-box">❄️</div>
+                    <h3>水曜日 WED</h3>
+                    <div class="location">七七羽球坊 20-22</div>
+                    <div class="details">二面場 (2H)</div>
+                    <div class="price-tag">臨打 NT$ 200</div>
+                </div>
+                <div class="card-back">
+                    <div class="back-header"><div class="back-title">S2 季繳 · 水曜七七</div></div>
+                    <div class="member-container">
+                        <div class="member-grid">
+                            <div class="member-row"><span class="m-id">01</span><span class="m-name">阿定</span><span class="m-status status-blue"></span></div>
+                            <div class="member-row"><span class="m-id">02</span><span class="m-name">小飛</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">03</span><span class="m-name">阿融</span><span class="m-status status-blue"></span></div>
+                            <div class="member-row"><span class="m-id">04</span><span class="m-name">夯特</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">05</span><span class="m-name">鬼鬼</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">06</span><span class="m-name">陳雷</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">07</span><span class="m-name">小歐</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">08</span><span class="m-name">Eason</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">09</span><span class="m-name">孟謙</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">Timo</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">11</span><span class="m-name">酒久</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">12</span><span class="m-name">Sunny</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">13</span><span class="m-name">白維</span><span class="m-status status-yellow"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="tag-badge" style="color: #38ef7d;">#新手友善🍀</div>
         <div class="tag-badge" style="color: #f6d365;">#彩虹友善🌈</div>
-        <div class="footer-warning">
+        <p style="color: #ff4b2b; font-weight: 900; margin-top: 25px; font-size: 0.8rem; letter-spacing: 2px;">
             ❌ 臭臉魔人 ☹️ ｜ ❌ 球品不佳勿來
-        </div>
+        </p>
     </footer>
 </div>
 
 <script>
-    // 取得所有的卡片元素
     const cards = document.querySelectorAll('.card');
 
     cards.forEach(card => {
-        // 使用點擊觸發 (針對手機優化)
         card.addEventListener('click', function(e) {
-            // 如果點擊的是內部滾動區，不觸發翻轉（以免想看名單卻翻走）
+            // 💡 修正邏輯：如果使用者是在捲動名單(member-container)，則不要翻轉卡片
             if (e.target.closest('.member-container')) return;
-            
+
+            // 切換翻轉類別
             this.classList.toggle('is-flipped');
             
-            // 翻轉時自動將內部滾動條回到頂部
-            const container = this.querySelector('.member-container');
-            if (container) container.scrollTop = 0;
+            // 可選：點擊一張時關閉其他張
+            cards.forEach(c => {
+                if (c !== this) c.classList.remove('is-flipped');
+            });
         });
     });
 </script>
