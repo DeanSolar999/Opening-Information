@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曜日羽球團 2026 S2 - 開場資訊</title>
+    <title>曜日羽球團 2026 S2 - 宇宙開場資訊</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,21 +13,20 @@
         :root {
             --text-main: #ffffff;
             --text-muted: #adb5bd;
-            --glass-bg: rgba(15, 20, 30, 0.75); 
-            --glass-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            --glass-bg: rgba(15, 20, 30, 0.65); 
+            --glass-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
             --status-ok: #2ecc71;      
             --status-blue: #3498db;    
             --status-yellow: #f1c40f;  
             --status-red: #e74c3c;     
-            --status-pending: rgba(255, 255, 255, 0.1);
         }
 
-        .theme-mon { --theme-color: #da22ff; --theme-gradient: linear-gradient(135deg, #da22ff 0%, #9733ee 100%); --theme-glow: rgba(218, 34, 255, 0.5); }
-        .theme-tue { --theme-color: #ff416c; --theme-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); --theme-glow: rgba(255, 65, 108, 0.5); }
-        .theme-wed { --theme-color: #00c6ff; --theme-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); --theme-glow: rgba(0, 198, 255, 0.5); }
-        .theme-thu { --theme-color: #11998e; --theme-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); --theme-glow: rgba(56, 239, 125, 0.5); }
-        .theme-sat { --theme-color: #f6d365; --theme-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); --theme-glow: rgba(246, 211, 101, 0.5); }
-        .theme-sun { --theme-color: #f12711; --theme-gradient: linear-gradient(135deg, #f12711 0%, #f5af19 100%); --theme-glow: rgba(245, 175, 25, 0.5); }
+        .theme-mon { --theme-color: #da22ff; --theme-gradient: linear-gradient(135deg, #da22ff 0%, #9733ee 100%); --theme-glow: rgba(218, 34, 255, 0.6); }
+        .theme-tue { --theme-color: #ff416c; --theme-gradient: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); --theme-glow: rgba(255, 65, 108, 0.6); }
+        .theme-wed { --theme-color: #00c6ff; --theme-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); --theme-glow: rgba(0, 198, 255, 0.6); }
+        .theme-thu { --theme-color: #11998e; --theme-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); --theme-glow: rgba(56, 239, 125, 0.6); }
+        .theme-sat { --theme-color: #f6d365; --theme-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%); --theme-glow: rgba(246, 211, 101, 0.6); }
+        .theme-sun { --theme-color: #f12711; --theme-gradient: linear-gradient(135deg, #f12711 0%, #f5af19 100%); --theme-glow: rgba(245, 175, 25, 0.6); }
         
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
@@ -40,42 +39,101 @@
             background-color: #05080a;
         }
 
-        .bg-fixed {
+        /* =========================================
+           背景層設計：深空、星空、流動漸層與邊緣暗角
+        ========================================= */
+        
+        .space-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -2;
-            background-image: 
-                linear-gradient(rgba(10, 15, 25, 0.5) 0%, rgba(5, 8, 12, 0.95) 100%),
-                url('https://images.unsplash.com/photo-1626225967045-2c70bc860430?auto=format&fit=crop&q=80&w=2070');
-            background-size: cover; background-position: center 20%; background-repeat: no-repeat;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #05080a 100%);
+            z-index: -5;
         }
+
+        .stars-small, .stars-medium, .stars-large {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -4;
+        }
+
+        .stars-small {
+            background-image: 
+                radial-gradient(1px 1px at 10% 10%, #ffffff, transparent),
+                radial-gradient(1px 1px at 30% 40%, #ffffff, transparent),
+                radial-gradient(1px 1px at 60% 20%, #ffffff, transparent),
+                radial-gradient(1px 1px at 80% 60%, #ffffff, transparent),
+                radial-gradient(1px 1px at 40% 80%, #ffffff, transparent),
+                radial-gradient(1px 1px at 90% 90%, #ffffff, transparent);
+            background-size: 100px 100px;
+            animation: starTwinkle 2.5s infinite alternate, starDrift 100s linear infinite;
+        }
+
+        .stars-medium {
+            background-image: 
+                radial-gradient(1.5px 1.5px at 20% 20%, #ffffff, transparent),
+                radial-gradient(1.5px 1.5px at 70% 30%, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1.5px 1.5px at 50% 70%, #ffffff, transparent),
+                radial-gradient(1.5px 1.5px at 15% 85%, rgba(255,255,255,0.9), transparent);
+            background-size: 200px 200px;
+            animation: starTwinkle 4s infinite alternate, starDrift 80s linear infinite;
+        }
+
+        .stars-large {
+            background-image: 
+                radial-gradient(2px 2px at 40% 40%, #ffffff, transparent),
+                radial-gradient(2px 2px at 80% 80%, #ffffff, transparent);
+            background-size: 350px 350px;
+            filter: drop-shadow(0 0 4px #ffffff);
+            animation: starTwinkle 3s infinite alternate, starDrift 60s linear infinite;
+        }
+
+        @keyframes starTwinkle { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+        @keyframes starDrift { from { background-position: 0 0; } to { background-position: -500px -1000px; } }
 
         .fluid-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
-            background: linear-gradient(45deg, transparent, rgba(26, 35, 51, 0.2), rgba(43, 27, 61, 0.2));
+            z-index: -3;
+            background: linear-gradient(45deg, transparent, rgba(26, 35, 51, 0.3), rgba(43, 27, 61, 0.3));
             background-size: 400% 400%; animation: gradientFlow 15s ease infinite;
         }
         @keyframes gradientFlow { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+        .vignette-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at center, transparent 20%, rgba(0, 0, 0, 0.9) 100%);
+            pointer-events: none;
+        }
+
+        /* =========================================
+           前景設計：卡片與文字排版
+        ========================================= */
 
         .container { max-width: 1100px; width: 100%; padding-bottom: 50px; position: relative; z-index: 1; }
 
         header {
             text-align: center; margin-bottom: 30px; padding: 35px;
-            background: var(--glass-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+            background: var(--glass-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: var(--glass-shadow), inset 0 1px 2px rgba(255,255,255,0.1);
         }
-        h1 { font-size: 2.2rem; margin: 0; font-weight: 900; letter-spacing: 2px; }
+        
+        h1 { 
+            font-size: 2.2rem; margin: 0; font-weight: 900; letter-spacing: 2px; 
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.2);
+        }
 
         .region-title {
             text-align: center; font-size: 1.8rem; font-weight: 900; margin: 50px 0 25px;
             display: flex; align-items: center; justify-content: center; gap: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.9), 0 0 15px rgba(255,255,255,0.15);
         }
-        .region-title::before, .region-title::after { content: ""; height: 3px; width: 50px; background: rgba(255,255,255,0.5); }
+        .region-title::before, .region-title::after { content: ""; height: 3px; width: 50px; background: rgba(255,255,255,0.3); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
 
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 30px; }
 
-        /* --- 修正卡片邏輯 --- */
         .card { height: 500px; perspective: 1200px; user-select: none; }
         .card-inner {
             position: relative; width: 100%; height: 100%;
@@ -83,13 +141,18 @@
             transform-style: preserve-3d;
         }
 
-        /* 電腦版：滑鼠經過翻轉 */
-        @media (hover: hover) {
-            .card:hover .card-inner { transform: rotateY(180deg); }
+        @keyframes breathingGlow {
+            0% { box-shadow: var(--glass-shadow), 0 0 10px var(--theme-glow), inset 0 1px 2px rgba(255, 255, 255, 0.1); }
+            100% { box-shadow: var(--glass-shadow), 0 0 35px var(--theme-glow), inset 0 1px 2px rgba(255, 255, 255, 0.3); }
         }
 
-        /* 通用/手機版：點擊後翻轉 */
-        .card.is-flipped .card-inner { transform: rotateY(180deg); }
+        @media (hover: hover) {
+            .card:hover .card-inner { transform: translateY(-10px) rotateY(180deg); }
+            .card:hover .card-front, .card:hover .card-back { animation: breathingGlow 1.5s infinite alternate ease-in-out; }
+        }
+
+        .card.is-flipped .card-inner { transform: translateY(-10px) rotateY(180deg); }
+        .card.is-flipped .card-back { animation: breathingGlow 1.5s infinite alternate ease-in-out; }
 
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
@@ -97,8 +160,18 @@
             border-radius: 24px; padding: 30px 20px;
             display: flex; flex-direction: column;
             background: var(--glass-bg); backdrop-filter: blur(16px);
-            border: 1.5px solid var(--theme-color); 
-            box-shadow: 0 0 15px var(--theme-glow), inset 0 0 15px var(--theme-glow), var(--glass-shadow);
+            
+            border-top: 1.5px solid rgba(255, 255, 255, 0.35);
+            border-left: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--theme-color); 
+            box-shadow: 0 0 15px var(--theme-glow), inset 0 1px 2px rgba(255,255,255,0.2), var(--glass-shadow);
+            overflow: hidden;
+        }
+
+        .card-front::before, .card-back::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+            background: var(--theme-gradient); opacity: 0.9;
         }
 
         .card-front { align-items: center; justify-content: center; }
@@ -113,22 +186,29 @@
             width: 65px; height: 65px; border-radius: 18px;
             background: var(--theme-gradient); font-size: 1.8rem;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; box-shadow: 0 10px 20px var(--theme-glow);
+            margin-bottom: 20px; box-shadow: 0 10px 25px var(--theme-glow), inset 0 2px 5px rgba(255,255,255,0.5);
         }
 
-        h3 { font-size: 1.7rem; font-weight: 900; margin: 0; text-shadow: 0 0 10px var(--theme-glow); }
+        h3 { font-size: 1.7rem; font-weight: 900; margin: 0; text-shadow: 0 0 15px var(--theme-glow); }
         .location { font-size: 1.15rem; font-weight: 700; margin: 15px 0 5px; text-align: center; }
         .details { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; text-align: center; }
         .price-tag { 
-            padding: 8px 25px; border-radius: 30px; border: 1px solid var(--theme-color); 
-            font-weight: 900; background: rgba(0,0,0,0.5); font-size: 1rem;
+            padding: 8px 25px; border-radius: 30px; 
+            border: 1px solid var(--theme-color); box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            font-weight: 900; background: rgba(0,0,0,0.6); font-size: 1rem;
         }
 
         .back-header { width: 100%; border-bottom: 2px solid var(--theme-color); padding-bottom: 8px; margin-bottom: 15px; flex-shrink: 0; }
-        .back-title { font-size: 0.95rem; font-weight: 900; color: var(--theme-color); letter-spacing: 1px; }
+        .back-title { font-size: 0.95rem; font-weight: 900; color: var(--theme-color); letter-spacing: 1px; text-shadow: 0 0 8px var(--theme-glow); }
         
-        .member-container { width: 100%; flex-grow: 1; overflow-y: auto; padding-right: 5px; -webkit-overflow-scrolling: touch; }
-        .member-container::-webkit-scrollbar { width: 3px; }
+        /* 💡 拉桿防擋修正：加大 right padding，自訂拉桿樣式 */
+        .member-container { 
+            width: 100%; flex-grow: 1; overflow-y: auto; 
+            padding-right: 15px; 
+            -webkit-overflow-scrolling: touch; 
+        }
+        .member-container::-webkit-scrollbar { width: 4px; }
+        .member-container::-webkit-scrollbar-track { background: transparent; }
         .member-container::-webkit-scrollbar-thumb { background: var(--theme-color); border-radius: 10px; }
 
         .member-grid { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: 10px 15px; }
@@ -140,28 +220,33 @@
         .m-id { color: var(--theme-color); margin-right: 8px; font-weight: 700; min-width: 20px; }
         .m-name { flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .m-status { width: 8px; height: 8px; border-radius: 50%; margin-left: 6px; flex-shrink: 0; }
-        .status-ok { background-color: var(--status-ok); box-shadow: 0 0 8px var(--status-ok); }
-        .status-blue { background-color: var(--status-blue); box-shadow: 0 0 8px var(--status-blue); }
-        .status-yellow { background-color: var(--status-yellow); box-shadow: 0 0 8px var(--status-yellow); }
-        .status-red { background-color: var(--status-red); box-shadow: 0 0 8px var(--status-red); }
+        .status-ok { background-color: var(--status-ok); box-shadow: 0 0 10px var(--status-ok); }
+        .status-blue { background-color: var(--status-blue); box-shadow: 0 0 10px var(--status-blue); }
+        .status-yellow { background-color: var(--status-yellow); box-shadow: 0 0 10px var(--status-yellow); }
+        .status-red { background-color: var(--status-red); box-shadow: 0 0 10px var(--status-red); }
 
         footer { margin-top: 40px; text-align: center; }
         .tag-badge { 
             display: inline-block; padding: 6px 15px; border-radius: 8px; 
             background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem; font-weight: 700; margin: 5px;
+            backdrop-filter: blur(5px);
         }
     </style>
 </head>
 <body>
 
-<div class="bg-fixed"></div>
+<div class="space-bg"></div>
+<div class="stars-small"></div>
+<div class="stars-medium"></div>
+<div class="stars-large"></div>
 <div class="fluid-overlay"></div>
+<div class="vignette-overlay"></div>
 
 <div class="container">
     <header>
         <h1>🏸 曜日羽球團 2026 S2</h1>
-        <p style="color: #f6d365; font-weight: 900; letter-spacing: 5px; margin: 10px 0 0;">Opening information ＆ quarterly payment member list</p>
+        <p style="color: #f6d365; font-weight: 900; letter-spacing: 5px; margin: 10px 0 0; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Opening information ＆ quarterly payment member list</p>
     </header>
 
     <div class="region-title">TAIPEI 台北區域</div>
@@ -450,10 +535,10 @@
                             <div class="member-row"><span class="m-id">07</span><span class="m-name">小歐</span><span class="m-status status-red"></span></div>
                             <div class="member-row"><span class="m-id">08</span><span class="m-name">Eason</span><span class="m-status status-red"></span></div>
                             <div class="member-row"><span class="m-id">09</span><span class="m-name">孟謙</span><span class="m-status status-yellow"></span></div>
-                            <div class="member-row"><span class="m-id">10</span><span class="m-name">Timo</span><span class="m-status status-yellow"></span></div>
-                            <div class="member-row"><span class="m-id">11</span><span class="m-name">酒久</span><span class="m-status status-yellow"></span></div>
-                            <div class="member-row"><span class="m-id">12</span><span class="m-name">Sunny</span><span class="m-status status-yellow"></span></div>
-                            <div class="member-row"><span class="m-id">13</span><span class="m-name">白維</span><span class="m-status status-yellow"></span></div>
+                            <div class="member-row"><span class="m-id">10</span><span class="m-name">Timo</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">11</span><span class="m-name">酒久</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">12</span><span class="m-name">Sunny</span><span class="m-status status-red"></span></div>
+                            <div class="member-row"><span class="m-id">13</span><span class="m-name">白維</span><span class="m-status status-ok"></span></div>
                         </div>
                     </div>
                 </div>
@@ -475,13 +560,8 @@
 
     cards.forEach(card => {
         card.addEventListener('click', function(e) {
-            // 💡 修正邏輯：如果使用者是在捲動名單(member-container)，則不要翻轉卡片
             if (e.target.closest('.member-container')) return;
-
-            // 切換翻轉類別
             this.classList.toggle('is-flipped');
-            
-            // 可選：點擊一張時關閉其他張
             cards.forEach(c => {
                 if (c !== this) c.classList.remove('is-flipped');
             });
